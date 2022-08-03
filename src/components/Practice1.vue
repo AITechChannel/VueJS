@@ -8,6 +8,10 @@ import VueAxios from "vue-axios";
 
 import ListItem from "../components/ListItem.vue";
 
+import { useMouse } from "../composables/mouse";
+
+const { x, y } = useMouse();
+
 const app = Vue.createApp();
 app.use(VueAxios, axios);
 
@@ -101,6 +105,8 @@ components: {
       ><p>Try add</p></ListItem
     >
   </div>
+
+  <div>Mouse coor at: {{ x }}, {{ y }}</div>
 </template>
 
 <script>
@@ -183,7 +189,7 @@ export default {
 .option {
   margin-bottom: 20px;
   display: flex;
-  align-todos: center;
+  align-items: center;
 }
 
 .header {
@@ -209,7 +215,7 @@ ul {
 }
 .list-item {
   display: flex;
-  align-todos: center;
+  align-items: center;
   margin: 5px 0;
   justify-content: space-between;
 }

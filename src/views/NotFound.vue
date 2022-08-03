@@ -2,7 +2,7 @@
 
 <template>
   <main>
-    <h1>This is HomePage</h1>
+    <h1>Page not found</h1>
   </main>
 </template>
 

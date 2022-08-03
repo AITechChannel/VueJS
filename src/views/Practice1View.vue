@@ -1,10 +1,11 @@
 <script setup>
-import Practice from "@/components/Practice.vue";
+import FetchAPiVue from "@/components/FetchAPi.vue";
+import Practice1 from "@/components/Practice1.vue";
 </script>
 
 <template>
   <div class="about">
-    <Practice />
+    <Practice1 />
   </div>
 </template>
 

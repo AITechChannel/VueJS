@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
@@ -12,11 +11,11 @@ import HelloWorld from "./components/HelloWorld.vue";
       width="125"
       height="125"
     />
-
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/practice1">Practice1</RouterLink>
+        <RouterLink to="/practice2">Practice2</RouterLink>
       </nav>
     </div>
   </header>
@@ -32,27 +31,35 @@ header {
   display: flex;
   z-index: 1;
   align-items: center;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 .wrapper {
   flex: 1;
+  width: 100%;
 }
 
 .logo {
   width: 50px;
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 1rem;
+  height: 100%;
 }
 
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 1rem;
   text-align: center;
-  margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  color: red;
 }
 
 nav a.router-link-exact-active:hover {
@@ -70,32 +77,8 @@ nav a:first-of-type {
 }
 
 .content {
-  padding-top: 200px;
+  padding-top: 80px;
 }
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
 }
 </style>
