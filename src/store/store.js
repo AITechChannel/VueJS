@@ -1,83 +1,82 @@
-import { createApp } from "vue";
 import { createStore } from "vuex";
 
 import taskApi from "../api/taskApi";
 
 const store = createStore({
   state: {
-    todos: [
-      {
-        id: 0,
-        content: "Task 1",
-        complete: false,
-        contenteditable: false,
-      },
-      {
-        id: 2,
-        content: "Task 2",
-        complete: false,
-        contenteditable: false,
-      },
-    ],
+    tasks: [],
   },
   mutations: {
-    increment(state) {
-      state.count++;
+    initTask: function (state, data) {
+      state.tasks = data;
     },
-    addTodo: function (state, valueTodo) {
-      if (state.todos.length > 0) {
-        var id = state.todos.slice(-1)[0].id + 1;
-      }
-      state.todos.push({
-        id: id || 1,
-        content: valueTodo,
-      });
-    },
-    delTodo: function (state, idTodo) {
-      const indexTodo = state.todos.indexOf(store.getters.thisTodo(idTodo));
 
-      state.todos.splice(indexTodo, 1);
+    addTask: function (state, payload) {
+      state.tasks.push(payload);
     },
-    toggleContenteditable: function (state, idTodo) {
-      const indexTodo = state.todos.indexOf(store.getters.thisTodo(idTodo));
 
-      state.todos[indexTodo].contenteditable =
-        !state.todos[indexTodo].contenteditable;
+    delTask: function (state, idTodo) {
+      const indexTodo = state.tasks.indexOf(store.getters.thisTask(idTodo));
+
+      state.tasks.splice(indexTodo, 1);
+    },
+
+    updTask: function (state, payload) {
+      const indexTodo = state.tasks.indexOf(store.getters.thisTask(payload.id));
+      console.log(indexTodo);
+
+      console.log(payload);
+
+      state.tasks[indexTodo].content = payload.content.content;
     },
   },
+
   getters: {
-    thisTodo: (state) => (idTodo) => {
-      return state.todos.find((todo) => todo.id === idTodo);
+    thisTask: (state) => (idTodo) => {
+      return state.tasks.find((todo) => todo.id === idTodo);
     },
   },
+
   actions: {
-    // async increment({ commit }) {
-    //   // commit("increment");
-    //   // console.log("action");
-
-    //   // fetch("https://api.coindesk.com/v1/bpi/currentprice.json").then((res) =>
-    //   //   res.json().then((data) => console.log(data))
-    //   // );
-
-    //   // commit("addTodo");
-
-    //   try {
-    //     // const data = await axiosApi.get(`posts`);
-    //     // console.log(data);
-
-    //     const data = await taskApi.createTask({ content: "abc" });
-    //     console.log(data);
-    //     commit("addTodo");
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
-
-    async createTask({ commit, state }, payload) {
+    async initTask({ commit }) {
       try {
+        const data = await taskApi.getActiveTasks();
+
+        console.log("init", data);
+
+        commit("initTask", data);
+      } catch (error) {}
+    },
+
+    async createTask({ commit }, payload) {
+      try {
+        // commit("addTask", payload);
         const data = await taskApi.createTask(payload);
-        console.log(data);
-        console.log(payload);
+
+        console.log("add", data);
+
+        commit("addTask", data);
+      } catch (error) {}
+    },
+
+    async delTask({ commit }, payload) {
+      try {
+        commit("delTask", payload);
+
+        const data = await taskApi.delTask(payload);
+
+        console.log("del", data);
+      } catch (error) {}
+    },
+
+    async updateTask({ commit }, payload) {
+      try {
+        console.log("sdfsf");
+        commit("updTask", payload);
+
+        const data = await taskApi.updateTask(payload);
+
+        console.log("update", data);
       } catch (error) {}
     },
   },

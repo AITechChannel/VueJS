@@ -1,10 +1,10 @@
 <script setup>
-import Practice2 from "@/components/Practice2.vue";
+import Practice3 from "@/components/Practice3.vue";
 </script>
 
 <template>
   <div class="container">
-    <Practice2 />
+    <Practice3 />
   </div>
 </template>
 
