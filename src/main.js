@@ -4,7 +4,9 @@ import router from "./router";
 import { plugin, defaultConfig } from "@formkit/vue";
 import store from "./store/store.js";
 import "@formkit/themes/genesis";
-import "./assets/main.css";
+// import "./assets/main.css";
+
+import "./scss/index.scss";
 
 const app = createApp(App);
 

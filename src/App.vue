@@ -13,18 +13,25 @@ import { RouterLink, RouterView } from "vue-router";
     />
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/practice1">Practice1</RouterLink>
-        <RouterLink to="/practice2">Practice2</RouterLink>
-        <RouterLink to="/practice3">Practice3</RouterLink>
+        <RouterLink v-for="item in nav" :to="`/${item}`">{{ item }}</RouterLink>
       </nav>
     </div>
   </header>
 
-  <RouterView class="content" />
+  <RouterView class="view" />
 </template>
 
-<style scoped>
+<script>
+export default {
+  data() {
+    return {
+      nav: ["Home", "practice1", "practice2", "practice3", "practice4"],
+    };
+  },
+};
+</script>
+
+<style scoped lang="scss">
 header {
   position: fixed;
   line-height: 1.5;
@@ -39,6 +46,7 @@ header {
   height: 70px;
   display: flex;
   align-items: center;
+  background-color: white;
 }
 
 .wrapper {
@@ -55,7 +63,7 @@ header {
 
 nav {
   width: 100%;
-  font-size: 1rem;
+  // font-size: 1.6rem;
   text-align: center;
 }
 
@@ -77,9 +85,7 @@ nav a:first-of-type {
   border: 0;
 }
 
-.content {
-  padding-top: 80px;
-}
-@media (min-width: 1024px) {
+.view {
+  padding: 80px 30px 30px 30px;
 }
 </style>

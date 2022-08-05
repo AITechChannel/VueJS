@@ -4,17 +4,9 @@ import Practice1 from "@/components/Practice1.vue";
 </script>
 
 <template>
-  <div class="about">
+  <div class="practice1">
     <Practice1 />
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<style></style>

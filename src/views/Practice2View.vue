@@ -3,15 +3,10 @@ import Practice2 from "@/components/Practice2.vue";
 </script>
 
 <template>
-  <div class="container">
+  <div class="practice2">
     <Practice2 />
+    <!-- <RouterView></RouterView> -->
   </div>
 </template>
 
-<style>
-.container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-</style>
+<style></style>

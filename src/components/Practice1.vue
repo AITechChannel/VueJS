@@ -107,6 +107,8 @@ components: {
   </div>
 
   <div>Mouse coor at: {{ x }}, {{ y }}</div>
+  <h1>{{ test }}</h1>
+  <h1>{{ todos.length }}</h1>
 </template>
 
 <script>
@@ -172,8 +174,8 @@ export default {
   },
 
   computed: {
-    now() {
-      return Date.now();
+    test() {
+      return this.todos.length;
     },
   },
   mounted() {
@@ -182,7 +184,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .container {
 }
 

@@ -23,7 +23,7 @@ components: {
 </script>
 
 <template>
-  <div class="practice2-container">
+  <div class="container">
     <div class="input-container">
       <input v-model="taskInput" ref="taskInput" />
       <button @click="createTask(taskInput)">ADD</button>
@@ -120,8 +120,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.practice2-container {
+<style scoped lang="scss">
+.container {
   width: 100%;
   display: flex;
   flex-direction: column;

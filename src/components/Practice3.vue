@@ -1,4 +1,5 @@
 <script setup>
+import CardItem from "./CardItem.vue";
 import { ref } from "vue";
 const submitted = ref(false);
 const submitHandler = async () => {
@@ -9,7 +10,7 @@ const submitHandler = async () => {
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <FormKit
       type="form"
       id="registration-example"
@@ -70,21 +71,55 @@ const submitHandler = async () => {
       <h2 class="des">Submission successful!</h2>
     </div>
     <h1>wellcome</h1>
+
+    <div v-for="(item, index) in data">
+      <CardItem
+        :key="`item${index}`"
+        :title="item.title"
+        :des="item.des"
+        :imgUrl="item.imgUrl"
+        @addCart="addCart(item.id)"
+      />
+    </div>
+
+    <p>Using text interpolation: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      rawHtml: "<span>sdfdf</span>",
+      data: [
+        {
+          id: 1,
+          title: "abc",
+          des: "123",
+          imgUrl:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+        },
+        {
+          id: 2,
+          title: "abc",
+          des: "123",
+          imgUrl:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+        },
+      ],
+    };
+  },
+
+  methods: {
+    addCart(id) {
+      console.log("add cart", id);
+    },
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .container {
-  input {
-    border: none;
-  }
 }
 </style>

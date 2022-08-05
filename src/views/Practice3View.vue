@@ -3,15 +3,9 @@ import Practice3 from "@/components/Practice3.vue";
 </script>
 
 <template>
-  <div class="container">
+  <div class="practice3">
     <Practice3 />
   </div>
 </template>
 
-<style>
-.container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-</style>
+<style></style>
